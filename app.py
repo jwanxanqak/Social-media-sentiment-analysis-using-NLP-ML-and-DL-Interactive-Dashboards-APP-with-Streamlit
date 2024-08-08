@@ -47,24 +47,6 @@ st.sidebar.markdown(data.query("airline_sentiment == @random_tweet")[["text"]].s
 
 
 ########################################
-#Number of tweets by sentiment
-########################################
-
-st.sidebar.markdown("### Number of tweets by sentiment")
-select = st.sidebar.selectbox('Visualization type', ['Histogram', 'Pie chart'], key='1')
-sentiment_count = data['airline_sentiment'].value_counts()
-sentiment_count = pd.DataFrame({'Sentiment':sentiment_count.index, 'Tweets':sentiment_count.values})
-
-if not st.sidebar.checkbox("Hide", False):
-    st.markdown("### Number of tweets by sentiment")
-    if select == 'Histogram':
-        fig = px.bar(sentiment_count, x='Sentiment', y='Tweets', color='Tweets')
-        st.plotly_chart(fig)
-    else:
-        fig = px.pie(sentiment_count, values='Tweets', names='Sentiment')
-        st.plotly_chart(fig)
-        
-########################################
 #geospatial representation of tweets
 ########################################
 
@@ -78,62 +60,6 @@ if not st.sidebar.checkbox("Close", False, key='2'):
     if st.sidebar.checkbox("Show raw data", False):
         st.write(modified_data)
 
-########################################
-#Total number of tweets for each airline
-########################################
-       
-st.sidebar.subheader("Total number of tweets for each airline")
-each_airline = st.sidebar.selectbox('Visualization type', ['Histogram', 'Pie chart'], key='3')
-airline_sentiment_count = data.groupby('airline')['airline_sentiment'].count().sort_values(ascending=False)
-airline_sentiment_count = pd.DataFrame({'Airline':airline_sentiment_count.index, 'Tweets':airline_sentiment_count.values.flatten()})
-if not st.sidebar.checkbox("Close", False, key='4'):
-    if each_airline == 'Histogram':
-        st.subheader("Total number of tweets for each airline")
-        fig_1 = px.bar(airline_sentiment_count, x='Airline', y='Tweets', color='Tweets', height=500)
-        st.plotly_chart(fig_1)
-    if each_airline == 'Pie chart':
-        st.subheader("Total number of tweets for each airline")
-        fig_2 = px.pie(airline_sentiment_count, values='Tweets', names='Airline')
-        st.plotly_chart(fig_2)
-
-
-@st.cache_data 
-def plot_sentiment(airline):
-    df = data[data['airline']==airline]
-    count = df['airline_sentiment'].value_counts()
-    count = pd.DataFrame({'Sentiment':count.index, 'Tweets':count.values.flatten()})
-    return count
-
-#####################################################
-#Breakdown airline by sentiment: individual analysis
-#####################################################
-
-st.sidebar.subheader("Breakdown airline by sentiment: individual analysis")
-choice = st.sidebar.multiselect('Pick airlines', ('US Airways','United','American','Southwest','Delta','Virgin America'))
-
-if len(choice) > 0:
-    st.subheader("Breakdown airline by sentiment: individual analysis")
-    breakdown_type = st.sidebar.selectbox('Visualization type', ['Pie chart', 'Bar plot', ], key='5')
-    fig_3 = make_subplots(rows=1, cols=len(choice), subplot_titles=choice)
-    if breakdown_type == 'Bar plot':
-        for i in range(1):
-            for j in range(len(choice)):
-                fig_3.add_trace(
-                    go.Bar(x=plot_sentiment(choice[j]).Sentiment, y=plot_sentiment(choice[j]).Tweets, showlegend=False),
-                    row=i+1, col=j+1
-                )
-        fig_3.update_layout(height=600, width=800)
-        st.plotly_chart(fig_3)
-    else:
-        fig_3 = make_subplots(rows=1, cols=len(choice), specs=[[{'type':'domain'}]*len(choice)], subplot_titles=choice)
-        for i in range(1):
-            for j in range(len(choice)):
-                fig_3.add_trace(
-                    go.Pie(labels=plot_sentiment(choice[j]).Sentiment, values=plot_sentiment(choice[j]).Tweets, showlegend=True),
-                    i+1, j+1
-                )
-        fig_3.update_layout(height=600, width=800)
-        st.plotly_chart(fig_3)
 
 #####################################################
 #Breakdown airline by sentiment: comparative analysis
