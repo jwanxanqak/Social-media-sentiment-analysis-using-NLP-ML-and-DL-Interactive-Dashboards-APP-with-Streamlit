@@ -14,10 +14,10 @@ RUN pip install -r requirements.txt
 COPY . /app
 
 # Informar a Docker que el contenedor escuchará en el puerto 8501 en tiempo de ejecución
-EXPOSE 10000
+EXPOSE 8501
 
 # Configurar el contenedor para que se ejecute como una aplicación Streamlit
 ENTRYPOINT ["streamlit", "run"]
 
 # Comando para ejecutar la aplicación
-CMD ["app.py", "--server.port=10000", "--server.address=0.0.0.0"]
+CMD ["app.py", "--server.port=8501", "--server.address=0.0.0.0"]
