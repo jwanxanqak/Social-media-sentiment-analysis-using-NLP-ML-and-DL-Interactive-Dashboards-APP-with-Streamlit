@@ -8,9 +8,9 @@ from PIL import Image
 
 
 # Load models
-logistic_model = joblib.load('C:/Users/Giovanny/Documents/Project/A11streamlitsentimentdashboard/NLPMLDLScikitLearn/logistic_model.pkl')
-rf_model = joblib.load('C:/Users/Giovanny/Documents/Project/A11streamlitsentimentdashboard/NLPMLDLScikitLearn/rf_model.pkl')
-svm_model = joblib.load('C:/Users/Giovanny/Documents/Project/A11streamlitsentimentdashboard/NLPMLDLScikitLearn/svm_model.pkl')
+logistic_model = joblib.load('logistic_model.pkl')
+rf_model = joblib.load('rf_model.pkl')
+svm_model = joblib.load('svm_model.pkl')
 
 # Function to load classification reports from .txt files
 def load_report(file_path):
@@ -19,9 +19,9 @@ def load_report(file_path):
     return report
 
 # Load classification reports
-logistic_report = load_report('C:/Users/Giovanny/Documents/Project/A11streamlitsentimentdashboard/NLPMLDLScikitLearn/logistic_classification_report.txt')
-rf_report = load_report('C:/Users/Giovanny/Documents/Project/A11streamlitsentimentdashboard/NLPMLDLScikitLearn/rf_classification_report.txt')
-svm_report = load_report('C:/Users/Giovanny/Documents/Project/A11streamlitsentimentdashboard/NLPMLDLScikitLearn/svm_classification_report.txt')
+logistic_report = load_report('logistic_classification_report.txt')
+rf_report = load_report('rf_classification_report.txt')
+svm_report = load_report('svm_classification_report.txt')
 
 # Function to load and display images
 def display_image(image_path):
@@ -86,18 +86,18 @@ if st.button('Predict'):
     if model_choice == 'Logistic Regression':
         model = logistic_model
         report = logistic_report
-        confusion_matrix_image = 'C:/Users/Giovanny/Documents/Project/A11streamlitsentimentdashboard/NLPMLDLScikitLearn/logistic_regression_confusion_matrix.png'
-        roc_curve_image = 'C:/Users/Giovanny/Documents/Project/A11streamlitsentimentdashboard/NLPMLDLScikitLearn/logistic_regression_roc_curve.png'
+        confusion_matrix_image = 'logistic_regression_confusion_matrix.png'
+        roc_curve_image = 'logistic_regression_roc_curve.png'
     elif model_choice == 'Random Forest':
         model = rf_model
         report = rf_report
-        confusion_matrix_image = 'C:/Users/Giovanny/Documents/Project/A11streamlitsentimentdashboard/NLPMLDLScikitLearn/random_forest_confusion_matrix.png'
-        roc_curve_image = 'C:/Users/Giovanny/Documents/Project/A11streamlitsentimentdashboard/NLPMLDLScikitLearn/random_forest_roc_curve.png'
+        confusion_matrix_image = 'random_forest_confusion_matrix.png'
+        roc_curve_image = 'random_forest_roc_curve.png'
     else:
         model = svm_model
         report = svm_report
-        confusion_matrix_image = 'C:/Users/Giovanny/Documents/Project/A11streamlitsentimentdashboard/NLPMLDLScikitLearn/svm_confusion_matrix.png'
-        roc_curve_image = 'C:/Users/Giovanny/Documents/Project/A11streamlitsentimentdashboard/NLPMLDLScikitLearn/svm_roc_curve.png'
+        confusion_matrix_image = 'svm_confusion_matrix.png'
+        roc_curve_image = 'svm_roc_curve.png'
 
     # Make prediction
     prediction = model.predict(df)
@@ -129,18 +129,18 @@ if uploaded_file is not None:
     if model_choice == 'Logistic Regression':
         model = logistic_model
         report_mass = logistic_report
-        confusion_matrix_image = 'C:/Users/Giovanny/Documents/Project/A11streamlitsentimentdashboard/NLPMLDLScikitLearn/logistic_regression_confusion_matrix.png'
-        roc_curve_image = 'C:/Users/Giovanny/Documents/Project/A11streamlitsentimentdashboard/NLPMLDLScikitLearn/logistic_regression_roc_curve.png'
+        confusion_matrix_image = 'logistic_regression_confusion_matrix.png'
+        roc_curve_image = 'logistic_regression_roc_curve.png'
     elif model_choice == 'Random Forest':
         model = rf_model
         report_mass = rf_report
-        confusion_matrix_image = 'C:/Users/Giovanny/Documents/Project/A11streamlitsentimentdashboard/NLPMLDLScikitLearn/random_forest_confusion_matrix.png'
-        roc_curve_image = 'C:/Users/Giovanny/Documents/Project/A11streamlitsentimentdashboard/NLPMLDLScikitLearn/random_forest_roc_curve.png'
+        confusion_matrix_image = 'random_forest_confusion_matrix.png'
+        roc_curve_image = 'random_forest_roc_curve.png'
     else:
         model = svm_model
         report_mass = svm_report
-        confusion_matrix_image = 'C:/Users/Giovanny/Documents/Project/A11streamlitsentimentdashboard/NLPMLDLScikitLearn/svm_confusion_matrix.png'
-        roc_curve_image = 'C:/Users/Giovanny/Documents/Project/A11streamlitsentimentdashboard/NLPMLDLScikitLearn/svm_roc_curve.png'
+        confusion_matrix_image = 'svm_confusion_matrix.png'
+        roc_curve_image = 'svm_roc_curve.png'
 
     predictions = model.predict(df)
     df['predictions'] = predictions
