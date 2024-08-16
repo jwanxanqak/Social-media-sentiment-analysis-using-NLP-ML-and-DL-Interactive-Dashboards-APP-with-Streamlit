@@ -1,11 +1,12 @@
-# Social media sentiment analysis using NLP, ML and DL: Interactive Dashboards (APP) with Streamlit and Python 
+# Social media sentiment analysis using NLP and ML: Interactive Dashboards (APP) with Streamlit and Python(Scikit-Learn)
 
 # Introduction
 
-Build interactive data dashboards with Streamlit and Python. 
-Create interactive plots with Plotly and Word Cloud. 
-Build sentiments classification model with Machine Learning and Deep Learning
-
+Build interactive data dashboards with Streamlit and Python(Scikit-Learn). 
+Build sentiments classification model with Machine Learning: logistic_regression, Random Forest and SVM
+build individual prediction section
+build massive prediction section
+show model evaluation indicators: confusion matrix, classification report and ROC curve
 
 Objectives
 
@@ -15,12 +16,21 @@ Objectives
     • Determine the Packages needed for the container image.
     • Generate a Dockerfile to build the image in the container.
 
-Container: [Dockerfile:](https://github.com/jwanxanqak/Social-media-sentiment-analysis-using-NLP-ML-and-DL-Interactive-Dashboards-APP-with-Streamlit/blob/Render/Dockerfile)  
+container: [Dockerfile:](https://github.com/jwanxanqak/Social-media-sentiment-analysis-using-NLP-ML-and-DL-Interactive-Dashboards-APP-with-Streamlit/blob/main/Dockerfile)  
 
-Application: [app](https://github.com/jwanxanqak/Social-media-sentiment-analysis-using-NLP-ML-and-DL-Interactive-Dashboards-APP-with-Streamlit/blob/Render/app.py)
+Application: [app](https://github.com/jwanxanqak/Social-media-sentiment-analysis-using-NLP-ML-and-DL-Interactive-Dashboards-APP-with-Streamlit/blob/main/app.py)
 
-environment requirements : [requirements](https://github.com/jwanxanqak/Social-media-sentiment-analysis-using-NLP-ML-and-DL-Interactive-Dashboards-APP-with-Streamlit/blob/Render/requirements.txt)
+environment requirements : [requirements](https://github.com/jwanxanqak/Social-media-sentiment-analysis-using-NLP-ML-and-DL-Interactive-Dashboards-APP-with-Streamlit/blob/main/requirements.txt)
 
-DataSet: [Tweets](https://github.com/jwanxanqak/Social-media-sentiment-analysis-using-NLP-ML-and-DL-Interactive-Dashboards-APP-with-Streamlit/blob/Render/Tweets.csv)
+DataSet: [Data_New](https://github.com/jwanxanqak/Social-media-sentiment-analysis-using-NLP-ML-and-DL-Interactive-Dashboards-APP-with-Streamlit/blob/main/data_list.csv)
+
+Models: [logistic_regression](https://github.com/jwanxanqak/Social-media-sentiment-analysis-using-NLP-ML-and-DL-Interactive-Dashboards-APP-with-Streamlit/blob/main/logistic_model.pkl), [random_forest](https://github.com/jwanxanqak/Social-media-sentiment-analysis-using-NLP-ML-and-DL-Interactive-Dashboards-APP-with-Streamlit/blob/main/rf_model.pkl) and [SVM](https://github.com/jwanxanqak/Social-media-sentiment-analysis-using-NLP-ML-and-DL-Interactive-Dashboards-APP-with-Streamlit/blob/main/svm_model.pkl)
+
+classification report: [logistic_regression](https://github.com/jwanxanqak/Social-media-sentiment-analysis-using-NLP-ML-and-DL-Interactive-Dashboards-APP-with-Streamlit/blob/main/logistic_classification_report.txt), [random_forest](https://github.com/jwanxanqak/Social-media-sentiment-analysis-using-NLP-ML-and-DL-Interactive-Dashboards-APP-with-Streamlit/blob/main/rf_classification_report.txt) and [SVM](https://github.com/jwanxanqak/Social-media-sentiment-analysis-using-NLP-ML-and-DL-Interactive-Dashboards-APP-with-Streamlit/blob/main/svm_classification_report.txt)
+
+confusion matrix:[logistic_regression](https://github.com/jwanxanqak/Social-media-sentiment-analysis-using-NLP-ML-and-DL-Interactive-Dashboards-APP-with-Streamlit/blob/main/logistic_regression_confusion_matrix.png), [random_forest](https://github.com/jwanxanqak/Social-media-sentiment-analysis-using-NLP-ML-and-DL-Interactive-Dashboards-APP-with-Streamlit/blob/main/random_forest_confusion_matrix.png) and [SVM](https://github.com/jwanxanqak/Social-media-sentiment-analysis-using-NLP-ML-and-DL-Interactive-Dashboards-APP-with-Streamlit/blob/main/svm_confusion_matrix.png)
+
+ROC curve: [logistic_regression](https://github.com/jwanxanqak/Social-media-sentiment-analysis-using-NLP-ML-and-DL-Interactive-Dashboards-APP-with-Streamlit/blob/main/logistic_regression_roc_curve.png), [random_forest](https://github.com/jwanxanqak/Social-media-sentiment-analysis-using-NLP-ML-and-DL-Interactive-Dashboards-APP-with-Streamlit/blob/main/random_forest_roc_curve.png) and [SVM](https://github.com/jwanxanqak/Social-media-sentiment-analysis-using-NLP-ML-and-DL-Interactive-Dashboards-APP-with-Streamlit/blob/main/svm_roc_curve.png)
+
 
 Link: [deployment]()
