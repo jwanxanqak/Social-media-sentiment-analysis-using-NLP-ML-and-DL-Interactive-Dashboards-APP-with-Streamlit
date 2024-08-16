@@ -16,12 +16,12 @@ Objectives
     • Determine the Packages needed for the container image.
     • Generate a Dockerfile to build the image in the container.
 
-[Dockerfile:](https://github.com/jwanxanqak/PlotAppPython/blob/main/Dockerfile)  
+[Dockerfile:](https://github.com/jwanxanqak/Social-media-sentiment-analysis-using-NLP-ML-and-DL-Interactive-Dashboards-APP-with-Streamlit/blob/main/Dockerfile)  
 
-Application: [app](https://github.com/jwanxanqak/PlotAppPython/blob/main/app.py)
+Application: [app](https://github.com/jwanxanqak/Social-media-sentiment-analysis-using-NLP-ML-and-DL-Interactive-Dashboards-APP-with-Streamlit/blob/main/app.py)
 
-environment requirements : [requirements](https://github.com/jwanxanqak/PlotAppPython/blob/main/requirements.txt)
+environment requirements : [requirements](https://github.com/jwanxanqak/Social-media-sentiment-analysis-using-NLP-ML-and-DL-Interactive-Dashboards-APP-with-Streamlit/blob/main/requirements.txt)
 
-DataSet: [Tweets](https://github.com/jwanxanqak/PlotAppPython/blob/main/tempYearly.csv)
+DataSet: [Data_New](https://github.com/jwanxanqak/Social-media-sentiment-analysis-using-NLP-ML-and-DL-Interactive-Dashboards-APP-with-Streamlit/blob/main/data_list.csv)
 
 
