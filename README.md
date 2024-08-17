@@ -33,4 +33,4 @@ confusion matrix:[logistic_regression](https://github.com/jwanxanqak/Social-medi
 ROC curve: [logistic_regression](https://github.com/jwanxanqak/Social-media-sentiment-analysis-using-NLP-ML-and-DL-Interactive-Dashboards-APP-with-Streamlit/blob/Render/logistic_regression_roc_curve.png), [random_forest](https://github.com/jwanxanqak/Social-media-sentiment-analysis-using-NLP-ML-and-DL-Interactive-Dashboards-APP-with-Streamlit/blob/Render/random_forest_roc_curve.png) and [SVM](https://github.com/jwanxanqak/Social-media-sentiment-analysis-using-NLP-ML-and-DL-Interactive-Dashboards-APP-with-Streamlit/blob/Render/svm_confusion_matrix.png)
 
 
-Link: [deployment]()
+Link: [deployment](https://social-media-sentiment-analysis-using.onrender.com/)
