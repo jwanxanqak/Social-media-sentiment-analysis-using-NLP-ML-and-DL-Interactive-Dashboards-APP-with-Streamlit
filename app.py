@@ -6,6 +6,8 @@ from sklearn.metrics import classification_report, confusion_matrix, roc_curve, 
 import matplotlib.pyplot as plt
 from PIL import Image
 
+from xquik_export import normalize_xquik_records
+
 
 # Load models
 logistic_model = joblib.load('logistic_model.pkl')
@@ -82,6 +84,7 @@ if st.button('Predict'):
         'longitude': [longitude]
     }
     df = pd.DataFrame(data)
+    model_columns = list(default_values.keys())
     
     if model_choice == 'Logistic Regression':
         model = logistic_model
@@ -100,7 +103,7 @@ if st.button('Predict'):
         roc_curve_image = 'svm_roc_curve.png'
 
     # Make prediction
-    prediction = model.predict(df)
+    prediction = model.predict(df[model_columns])
     st.write(f'Prediction: {prediction[0]}')
 
     # Show confusion matrix, ROC curve and Classification Report
@@ -123,7 +126,20 @@ if st.button('Predict'):
 st.header('Batch Prediction')
 uploaded_file = st.file_uploader("Choose a CSV file", type="csv")
 if uploaded_file is not None:
-    df = pd.read_csv(uploaded_file)
+    uploaded_df = pd.read_csv(uploaded_file)
+    xquik_records = normalize_xquik_records(
+        uploaded_df.to_dict(orient='records'),
+        default_values,
+    )
+    source_ids = []
+
+    if xquik_records:
+        source_ids = [record.pop('source_id') for record in xquik_records]
+        df = pd.DataFrame(xquik_records)
+        st.info('Xquik CSV export detected. Text rows were mapped to the model input schema.')
+    else:
+        df = uploaded_df
+
     model_choice = st.selectbox('Choose the model', ('Logistic Regression', 'Random Forest', 'SVM'), key='2')
 
     if model_choice == 'Logistic Regression':
@@ -142,11 +158,22 @@ if uploaded_file is not None:
         confusion_matrix_image = 'svm_confusion_matrix.png'
         roc_curve_image = 'svm_roc_curve.png'
 
-    predictions = model.predict(df)
-    df['predictions'] = predictions
-    st.write(df)
-    df.to_csv('predictions.csv', index=False)
-    st.download_button(label="Download Predictions", data=df.to_csv(index=False), file_name='predictions.csv', mime='text/csv')
+    model_columns = list(default_values.keys())
+    missing_columns = [column for column in model_columns if column not in df.columns]
+
+    if missing_columns:
+        st.error('CSV is missing required model columns: ' + ', '.join(missing_columns))
+        st.stop()
+
+    model_input = df[model_columns].copy()
+    predictions = model.predict(model_input)
+    prediction_output = model_input.copy()
+    if source_ids:
+        prediction_output['source_id'] = source_ids
+    prediction_output['predictions'] = predictions
+    st.write(prediction_output)
+    prediction_output.to_csv('predictions.csv', index=False)
+    st.download_button(label="Download Predictions", data=prediction_output.to_csv(index=False), file_name='predictions.csv', mime='text/csv')
 
     # Show confusion matrix, ROC curve and Classification Report
     st.write('Confusion Matrix:')

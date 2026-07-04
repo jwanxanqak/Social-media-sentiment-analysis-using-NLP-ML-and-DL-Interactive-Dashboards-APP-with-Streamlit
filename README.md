@@ -7,6 +7,10 @@ Build sentiments classification model with Machine Learning: logistic_regression
 build individual prediction section
 build massive prediction section
 show model evaluation indicators: confusion matrix, classification report and ROC curve
+accept Xquik CSV exports in the batch prediction flow by mapping common text
+columns such as `text`, `tweet_text`, `full_text`, `content`, `body`, `message`
+or `comment` into the trained model schema. Blank text rows are skipped and the
+source ID is preserved in the downloadable predictions.
 
 Objectives
 
